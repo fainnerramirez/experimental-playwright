@@ -12,6 +12,9 @@ export default defineConfig({
     extraHTTPHeaders: {
       'accept-language': 'es-ES,es;q=0.9',
     },
+    launchOptions: {
+        args: ['--disable-http2']
+    }
   },
   projects: [
     {
