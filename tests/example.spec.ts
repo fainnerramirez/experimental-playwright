@@ -71,7 +71,7 @@ const copys: copysType = {
 test.describe('Comenzo prueba avianca', () => {
 
     test('prueba home avianca', async ({ page }, testInfo) => {
-        test.setTimeout(300_000);
+        test.setTimeout(100_000);
         // const browser = await chromium.launch({ headless: true })
         // const context = await browser.newContext({
         //     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
@@ -122,9 +122,11 @@ test.describe('Comenzo prueba avianca', () => {
 
         //setear solo ida
         // expect(page.locator("#journeytypeId_1"));
-        const FechaSoloIda = await page.locator("#journeytypeId_1");
+        const FechaSoloIda = page.locator("#journeytypeId_1");
+        await expect(FechaSoloIda).toBeVisible({ timeout: 10000 }); // espera hasta 10s si es necesario
         await FechaSoloIda.scrollIntoViewIfNeeded();
         await FechaSoloIda.click();
+        
 
         expect(page.locator('.content-wrap'));
         expect(page.locator('#originBtn'));
