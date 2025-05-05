@@ -2,8 +2,9 @@
 
 // export default defineConfig({
 //     use: {
-//         headless: true,
-//         viewport: { width: 1280, height: 800 },
+//         headless: false,
+//         //viewport: { width: 1280, height: 800 },
+//         viewport: { width: 1600, height: 1200 },
 //         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
 //         locale: 'es-ES',
 //         ignoreHTTPSErrors: true,
@@ -21,14 +22,6 @@
 //             name: 'chrome',
 //             use: {
 //                 browserName: 'chromium',
-//                 channel: 'chrome', // Esto usa Chrome real en lugar del bundled Chromium
-//                 headless: true,
-//                 userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-//                 viewport: { width: 1280, height: 800 },
-//                 locale: 'es-ES',
-//                 extraHTTPHeaders: {
-//                     'accept-language': 'es-ES,es;q=0.9',
-//                 },
 //             },
 //         },
 //     ],

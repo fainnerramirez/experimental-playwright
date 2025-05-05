@@ -115,10 +115,10 @@ test.describe('Comenzo prueba avianca', () => {
                 get: () => false,
             });
         });
-        
+
         await page.goto('https://www.avianca.com/');
         await takeScreenshot('01-goto-avianca');
-        
+
         const consentBtn = page.locator('#onetrust-pc-btn-handler');
 
         if (await consentBtn.isVisible()) {
@@ -127,11 +127,11 @@ test.describe('Comenzo prueba avianca', () => {
         }
 
         //setear solo ida
-        const fechaSoloIda = page.locator("#journeytypeId_1")
-        // expect(page.locator("#journeytypeId_1"));
-        // expect(page.locator("#journeytypeId_1")).toBeVisible(); // espera hasta 10s si es necesario
-        await fechaSoloIda.scrollIntoViewIfNeeded();
-        await page.locator("#journeytypeId_1").click();
+        // const fechaSoloIda = page.locator("#journeytypeId_1")
+        // // expect(page.locator("#journeytypeId_1"));
+        // // expect(page.locator("#journeytypeId_1")).toBeVisible(); // espera hasta 10s si es necesario
+        // await fechaSoloIda.scrollIntoViewIfNeeded();
+        // await page.locator("#journeytypeId_1").click();
 
         await expect(page.locator('.content-wrap')).toBeVisible();
         await expect(page.locator('#originBtn')).toBeVisible();
@@ -155,8 +155,8 @@ test.describe('Comenzo prueba avianca', () => {
         await page.locator('span').filter({ hasText: copys['fecha_salida'] }).click();
         await takeScreenshot('05-fecha-ida');
 
-        // await page.locator('span').filter({ hasText: copys['fecha_llegada'] }).click();
-        // await takeScreenshot('06-fecha-vuelta');
+        await page.locator('span').filter({ hasText: copys['fecha_llegada'] }).click();
+        await takeScreenshot('06-fecha-vuelta');
 
         // await page.getByRole('button', { name: '' }).nth(1).click();
         // await page.getByRole('button', { name: '' }).nth(2).click();
@@ -177,53 +177,23 @@ test.describe('Comenzo prueba avianca', () => {
         await page.locator('.journey_fares').first().locator('.light-basic.cro-new-basic-button').click();
         //  await page.locator('.journey_fares').first().locator('.fare-flex').click();
         await takeScreenshot('09-seleccion-vuelo-ida');
-        // await page.waitForSelector(".cro-button.cro-no-accept-upsell-button");
-        // await page.locator('.cro-button.cro-no-accept-upsell-button').click();
-
-        //seleccionar el boton de continuar el vuelo
-        // await page.evaluate(() => {
-        //     const btn = document.querySelector('.button.page_button.btn-action');
-        //     if (btn) btn.scrollIntoView({ behavior: 'auto', block: 'center' });
-        // });
-
-        // await page.addStyleTag({
-        //     content: `
-        //     html {
-        //     transform: scale(0.75);
-        //     transform-origin: 0 0;
-        //     }
-        // `
-        // });
+        //@ts-ignore
+        
+        const containerVuelta = page.locator("#journeysContainerId_1");
+        await expect(containerVuelta).toBeVisible();
+        // await expect(page.locator('.journey_price_fare-select_label-text').nth(22)).toBeVisible();
+        await containerVuelta.locator(".journey_price_fare-select_label-text").first().click();
+        await takeScreenshot('13-seleccion-vuelo-regreso');
+        await containerVuelta.locator('.journey_fares').first().locator('.light-basic.cro-new-basic-button').click();
+        await page.waitForTimeout(3000);
+        await takeScreenshot('13-resumen-de-vuelos-seleccionados');
 
         // await page.locator(".button.page_button.btn-action").click();
         expect(page.locator(".button.page_button.btn-action")).toBeVisible();
         await page.locator('.button.page_button.btn-action').click();
 
         await page.waitForSelector(".passenger_data");
-        await page.waitForTimeout(8000);
+        await page.waitForTimeout(5000);
         await takeScreenshot("fill-passenger");
-
-        // const continuarBtn = page.locator('.button.page_button.btn-action');
-        // await continuarBtn.scrollIntoViewIfNeeded();
-        // await continuarBtn.click();
-
-        //button page_button btn-action page_button-primary-flow ng-star-inserted
-
-        //@ts-ignore
-        // expect(page.getByText(copys[idioma].vuelta));
-        // expect(page.locator('.journey_price_fare-select_label-text'))
-        // await takeScreenshot('13-seleccion-vuelo-regreso');
-        // await page.locator('.journey_fares').first().locator('.light-basic.cro-new-basic-button').click();
-
-        //  expect(page.locator('.fare_button'))
-
-        //  await takeScreenshot('14-seleccion-vuelo-regreso');
-        //  await page.locator('.fare_button').last().click();
-
-        //  await takeScreenshot('15-fin');
-        //  expect(page.getByText(copys[idioma].vuelta))
-
     });
-
-
 });
