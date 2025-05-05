@@ -151,11 +151,11 @@ test.describe('Comenzo prueba avianca', () => {
         // await page.locator('span').filter({ hasText: copys['fecha_llegada'] }).click();
         // await takeScreenshot('06-fecha-vuelta');
 
-        await page.getByRole('button', { name: '' }).nth(1).click();
-        await page.getByRole('button', { name: '' }).nth(2).click();
-        await page.getByRole('button', { name: '' }).nth(3).click();
-        const confirmar = page.locator('div#paxControlSearchId > div > div:nth-of-type(2) > div > div > button')
-        confirmar.click()
+        // await page.getByRole('button', { name: '' }).nth(1).click();
+        // await page.getByRole('button', { name: '' }).nth(2).click();
+        // await page.getByRole('button', { name: '' }).nth(3).click();
+        // const confirmar = page.locator('div#paxControlSearchId > div > div:nth-of-type(2) > div > div > button')
+        // confirmar.click()
         await takeScreenshot('07-seleccion-pasajeros');
         //@ts-ignore
         await expect(page.getByRole('button', { name: copys[idioma].buscar, exact: true })).toBeVisible()
