@@ -121,10 +121,11 @@ test.describe('Comenzo prueba avianca', () => {
         await page.locator('.save-preference-btn-handler.onetrust-close-btn-handler').click();
 
         //setear solo ida
+        const fechaSoloIda = page.locator("#journeytypeId_1")
         // expect(page.locator("#journeytypeId_1"));
         // expect(page.locator("#journeytypeId_1")).toBeVisible(); // espera hasta 10s si es necesario
-        // //await FechaSoloIda.scrollIntoViewIfNeeded();
-        // await page.locator("#journeytypeId_1").click();
+        await fechaSoloIda.scrollIntoViewIfNeeded();
+        await page.locator("#journeytypeId_1").click();
 
         expect(page.locator('.content-wrap'));
         expect(page.locator('#originBtn'));
@@ -163,10 +164,8 @@ test.describe('Comenzo prueba avianca', () => {
         await page.getByRole('button', { name: copys[idioma].buscar, exact: true }).click();
         await takeScreenshot('08-buscar');
 
-        expect(page.locator('#pageWrap'))
-
-        expect(page.locator('.journey_price_fare-select_label-text'));
-        await page.waitForSelector(".journey_price_fare-select_label-text");
+        await page.waitForSelector('#pageWrap');
+        await expect(page.locator(".journey_price_fare-select_label-text"));
         await page.locator('.journey_price_fare-select_label-text').first().click();
         await page.waitForSelector(".journey_fares");
         await page.locator('.journey_fares').first().locator('.light-basic.cro-new-basic-button').click();
