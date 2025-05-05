@@ -165,7 +165,8 @@ test.describe('Comenzo prueba avianca', () => {
 
         expect(page.locator('#pageWrap'))
 
-        expect(page.locator('.journey_price_fare-select_label-text'))
+        expect(page.locator('.journey_price_fare-select_label-text'));
+        await page.waitForSelector(".journey_price_fare-select_label-text");
         await page.locator('.journey_price_fare-select_label-text').first().click();
         await page.waitForSelector(".journey_fares");
         await page.locator('.journey_fares').first().locator('.light-basic.cro-new-basic-button').click();
