@@ -124,8 +124,6 @@ test.describe('Comenzo prueba avianca', () => {
         if (await consentBtn.isVisible()) {
             await consentBtn.click();
             await page.locator('.save-preference-btn-handler.onetrust-close-btn-handler').click();
-            // Espera explícita para asegurar que el overlay desaparezca
-            await page.waitForSelector('#onetrust-consent-sdk', { state: 'detached' });
         }
 
         //setear solo ida
