@@ -1,32 +1,28 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-    testDir: './tests',
-    timeout: 60000,
-    reporter: 'html',
-    outputDir: 'test-results',
-    use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        video: 'off',
-        screenshot: 'on',
-        launchOptions: {
-            args: ['--disable-http2']
-        }
+  use: {
+    headless: true,
+    viewport: { width: 1280, height: 800 },
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+    locale: 'es-ES',
+    ignoreHTTPSErrors: true,
+    screenshot: 'on',
+    video: 'off',
+    extraHTTPHeaders: {
+      'accept-language': 'es-ES,es;q=0.9',
     },
-    projects: [
-        // {
-        //     name: 'chrome',
-        //     use: {
-        //         browserName: 'chromium',
-        //     },
-        // },
-        // {
-        //     name: 'firefox',
-        //     use: {
-        //         browserName: 'firefox',
-        //     },
-        // }
-    ],
+  },
+  projects: [
+    {
+      name: 'chrome',
+      use: {
+        browserName: 'chromium',
+      },
+    },
+  ],
+  reporter: 'html',
+  timeout: 60000,
+  testDir: './tests',
+  outputDir: 'test-results',
 });
