@@ -179,6 +179,7 @@ test.describe('Comenzo prueba avianca', () => {
         await takeScreenshot('09-seleccion-vuelo-ida');
         //@ts-ignore
         
+        await page.waitForSelector("#journeysContainerId_1", {timeout: 15000});
         const containerVuelta = page.locator("#journeysContainerId_1");
         await expect(containerVuelta).toBeVisible();
         // await expect(page.locator('.journey_price_fare-select_label-text').nth(22)).toBeVisible();
