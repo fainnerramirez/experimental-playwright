@@ -122,9 +122,9 @@ test.describe('Comenzo prueba avianca', () => {
 
         //setear solo ida
         // expect(page.locator("#journeytypeId_1"));
+        expect(page.locator("#journeytypeId_1")).toBeVisible({ timeout: 10000 }); // espera hasta 10s si es necesario
+        //await FechaSoloIda.scrollIntoViewIfNeeded();
         const FechaSoloIda = page.locator("#journeytypeId_1");
-        await expect(FechaSoloIda).toBeVisible({ timeout: 10000 }); // espera hasta 10s si es necesario
-        await FechaSoloIda.scrollIntoViewIfNeeded();
         await FechaSoloIda.click();
         
 
