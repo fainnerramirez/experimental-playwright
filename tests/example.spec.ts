@@ -127,8 +127,8 @@ test.describe('Comenzo prueba avianca', () => {
         await fechaSoloIda.scrollIntoViewIfNeeded();
         await page.locator("#journeytypeId_1").click();
 
-        expect(page.locator('.content-wrap'));
-        expect(page.locator('#originBtn'));
+        await expect(page.locator('.content-wrap')).toBeVisible();
+        await expect(page.locator('#originBtn')).toBeVisible();
         //@ts-ignore
         const origen = page.getByPlaceholder((copys[idioma]).origen);
         await page.locator('button#originBtn').click();
@@ -165,7 +165,7 @@ test.describe('Comenzo prueba avianca', () => {
         await takeScreenshot('08-buscar');
 
         await page.waitForSelector('#pageWrap');
-        await expect(page.locator(".journey_price_fare-select_label-text"));
+        await expect(page.locator(".journey_price_fare-select_label-text").first()).toBeVisible();
         await page.locator('.journey_price_fare-select_label-text').first().click();
         await page.waitForSelector(".journey_fares");
         await page.locator('.journey_fares').first().locator('.light-basic.cro-new-basic-button').click();
