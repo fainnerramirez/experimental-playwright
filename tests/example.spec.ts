@@ -115,10 +115,18 @@ test.describe('Comenzo prueba avianca', () => {
                 get: () => false,
             });
         });
+        
         await page.goto('https://www.avianca.com/');
         await takeScreenshot('01-goto-avianca');
-        await page.locator('#onetrust-pc-btn-handler').click();
-        await page.locator('.save-preference-btn-handler.onetrust-close-btn-handler').click();
+        
+        const consentBtn = page.locator('#onetrust-pc-btn-handler');
+
+        if (await consentBtn.isVisible()) {
+            await consentBtn.click();
+            await page.locator('.save-preference-btn-handler.onetrust-close-btn-handler').click();
+            // Espera explícita para asegurar que el overlay desaparezca
+            await page.waitForSelector('#onetrust-consent-sdk', { state: 'detached' });
+        }
 
         //setear solo ida
         const fechaSoloIda = page.locator("#journeytypeId_1")
