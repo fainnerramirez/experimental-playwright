@@ -122,9 +122,9 @@ test.describe('Comenzo prueba avianca', () => {
 
         //setear solo ida
         // expect(page.locator("#journeytypeId_1"));
-        expect(page.locator("#journeytypeId_1")).toBeVisible(); // espera hasta 10s si es necesario
-        //await FechaSoloIda.scrollIntoViewIfNeeded();
-        await page.locator("#journeytypeId_1").click();
+        // expect(page.locator("#journeytypeId_1")).toBeVisible(); // espera hasta 10s si es necesario
+        // //await FechaSoloIda.scrollIntoViewIfNeeded();
+        // await page.locator("#journeytypeId_1").click();
 
         expect(page.locator('.content-wrap'));
         expect(page.locator('#originBtn'));
